@@ -1,0 +1,94 @@
+<h1>RECIPES</h1>
+<div class="alert alert-success" *ngIf="message">{{message}}</div>
+<div>
+    <!-- <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Details</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Status</th>            
+                <th>Upload Date</th>
+                <th>View Count</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let recipe of recipes">
+                <td>{{recipe.id}}</td>
+                <td>{{recipe.title}}</td>
+                <td>{{recipe.description}}</td>
+                <td>{{recipe.details}}</td>
+                <td>{{recipe.image}}</td>
+                <td>{{recipe.price}}</td>
+                <td>{{recipe.status}}</td>
+                <td>{{recipe.uploadDate | date}}</td>
+                <td>{{recipe.viewCount}}</td>
+                <td><a [routerLink]="[recipe.id]" class="btn btn-success">Update</a></td>
+                <td><button (click)="deleteRecipe(recipe.id)" class="btn btn-warning">Delete</button></td>
+            </tr>
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+    <div class="row">
+        <button (click)="addRecipe()" class="btn btn-success">Add</button>
+    </div> -->
+
+    <div class="mb-4">
+        <button (click)="addRecipe()" class="btn btn-success btn-lg">Add</button>
+    </div>
+    <table mat-table [dataSource]="recipeDataSource" class="recipes-table mat-elevation-z8">
+        <ng-container matColumnDef="title">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Title</th>
+            <td mat-cell *matCellDef="let recipe"> {{recipe.title}} </td>
+        </ng-container>
+        <ng-container matColumnDef="description">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Description</th>
+            <td mat-cell *matCellDef="let recipe"> {{recipe.description}} </td>
+        </ng-container>
+        <ng-container matColumnDef="details">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Details</th>
+            <td mat-cell *matCellDef="let recipe"> {{recipe.details}} </td>
+        </ng-container>
+        <ng-container matColumnDef="image">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Image</th>
+            <td mat-cell *matCellDef="let recipe"><img [src]="recipe.imageInBase64" class="avatar"/></td>
+        </ng-container>
+        <ng-container matColumnDef="price">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Price</th>
+            <td mat-cell *matCellDef="let recipe"> ${{recipe.price}} </td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let recipe"> {{recipe.status}} </td>
+        </ng-container>
+        <ng-container matColumnDef="createdAt">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Upload Date</th>
+            <td mat-cell *matCellDef="let recipe"> {{recipe.createdAt}} </td>
+        </ng-container>
+        <ng-container matColumnDef="viewCount">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>View Count</th>
+            <td mat-cell *matCellDef="let recipe"> {{recipe.viewCount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="update">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Update</th>
+            <td mat-cell *matCellDef="let recipe">
+                <button mat-raised-button color="primary" (click)="updateRecipe(recipe.id)" class="mr-3">Update</button>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Delete</th>
+            <td mat-cell *matCellDef="let recipe">
+                <button mat-raised-button color="warn" (click)="deleteRecipe(recipe.id)">Delete</button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20, 25, 30, 35, 40, 45, 50]" showFirstLastButtons></mat-paginator>
+</div>

@@ -1,0 +1,17 @@
+.ice-cream {
+    padding: 10px;
+}
+
+.quantity {
+    width: 60px;
+    margin-left: 10px;
+}
+
+.shopping-cart {
+    padding-left: 10px;
+    padding-bottom: 3px;
+}
+
+.quantity-input-box {
+    width: 110px;
+}

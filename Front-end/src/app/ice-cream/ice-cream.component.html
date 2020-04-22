@@ -1,0 +1,58 @@
+<h1>ICE-CREAMS</h1>
+<div class="alert alert-success" *ngIf="message">{{message}}</div>
+<div>
+    <!-- <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let iceCream of iceCreams">
+                <td>{{iceCream.id}}</td>
+                <td>{{iceCream.name}}</td>
+                <td>{{iceCream.description}}</td>
+                <td><a [routerLink]="[iceCream.id]" class="btn btn-success">Update</a></td>
+                <td><button (click)="deleteIceCream(iceCream.id)" class="btn btn-warning">Delete</button></td>
+            </tr>
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+    <div class="row">
+        <button (click)="addIceCream()" class="btn btn-success">Add</button>
+    </div> -->
+
+    <div class="mb-4">
+        <button (click)="addIceCream()" class="btn btn-success btn-lg">Add</button>
+    </div>
+    <table mat-table [dataSource]="iceCreamDataSource" class="ice-creams-table mat-elevation-z8">
+        <ng-container matColumnDef="name">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let iceCream"> {{iceCream.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="description">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Description</th>
+            <td mat-cell *matCellDef="let iceCream"> {{iceCream.description}} </td>
+        </ng-container>
+        <ng-container matColumnDef="update">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Update</th>
+            <td mat-cell *matCellDef="let iceCream">
+                <button mat-raised-button color="primary" (click)="updateIceCream(iceCream.id)" class="mr-3">Update</button>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Delete</th>
+            <td mat-cell *matCellDef="let iceCream">
+                <button mat-raised-button color="warn" (click)="deleteIceCream(iceCream.id)">Delete</button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20, 25, 30, 35, 40, 45, 50]" showFirstLastButtons></mat-paginator>
+</div>

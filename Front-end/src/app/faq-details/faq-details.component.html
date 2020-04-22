@@ -1,0 +1,29 @@
+<div class="container">
+    <h1>FAQ Details</h1>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="alert alert-warning" *ngIf="faqForm.dirty && faqForm.invalid">Enter valid values!</div>
+            <div class="alert alert-warning" *ngIf="faqForm.dirty && question.invalid">Enter question!</div>
+            <div class="alert alert-warning" *ngIf="faqForm.dirty && answer.invalid">Enter answer!</div>
+            <div class="alert alert-warning" *ngIf="faqForm.dirty && status.invalid">Enter status!</div>
+            <form (ngSubmit)="!faqForm.invalid && saveFAQ()" #faqForm="ngForm">
+                <fieldset class="form-group">
+                    <label>Question</label>
+                    <input #question="ngModel" class="form-control" type="text" [(ngModel)]="faq.question" name="question" required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Answer</label>
+                    <input #answer="ngModel" class="form-control" type="text" [(ngModel)]="faq.answer" name="answer" required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Status</label>
+                    <input #status="ngModel" class="form-control" type="text" [(ngModel)]="faq.status" name="status" required="required"/>
+                </fieldset>
+                <button type="submit" class="btn btn-success">Save</button>
+            </form>
+        </div>
+        <div>
+            <img src="../../assets/images/uploaded/source.gif" width="500px" height="400px"/>
+        </div>
+    </div>
+</div>

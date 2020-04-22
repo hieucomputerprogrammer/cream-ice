@@ -1,0 +1,81 @@
+<div class="container">
+    <h1>Add User</h1>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="alert alert-warning" *ngIf="userForm.dirty && userForm.invalid">Enter valid values!</div>
+            <div class="alert alert-warning" *ngIf="userForm.dirty && username.invalid">Enter username!</div>
+            <div class="alert alert-warning" *ngIf="userForm.dirty && password.invalid">Enter password!</div>
+            <div class="alert alert-warning" *ngIf="userForm.dirty && name.invalid">Enter name!</div>
+            <div class="alert alert-warning" *ngIf="userForm.dirty && gender.invalid">Enter gender!</div>
+            <div class="alert alert-warning" *ngIf="userForm.dirty && dateOfBirth.invalid">Enter gender!</div>
+            <div class="alert alert-warning" *ngIf="userForm.dirty && address.invalid">Enter address!</div>
+            <div class="alert alert-warning" *ngIf="userForm.dirty && phoneNumber.invalid">Enter phone number!</div>
+            <div class="alert alert-warning" *ngIf="userForm.dirty && email.invalid">Enter email!</div>
+            <!-- <div class="alert alert-warning" *ngIf="userForm.dirty && avatar.invalid">Select avatar!</div> -->
+            <!-- <div class="alert alert-warning" *ngIf="userForm.dirty && status.invalid">Enter status!</div> -->
+            <form (ngSubmit)="!userForm.invalid && addUser(userForm)" #userForm="ngForm">
+                <fieldset class="form-group">
+                    <label>Username</label>
+                    <input #username="ngModel" class="form-control" type="text" [(ngModel)]="user.username" name="username" required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Password</label>
+                    <input #password="ngModel" class="form-control" type="password" [(ngModel)]="user.password" name="password" required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Name</label>
+                    <input #name="ngModel" class="form-control" type="text" [(ngModel)]="user.name" name="name" required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Gender</label>
+                    <input #gender="ngModel" class="form-control" type="text" [(ngModel)]="user.gender" name="gender" required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Date of Birth</label>
+                    <input #dateOfBirth="ngModel" class="form-control" type="date" [ngModel]="user.dateOfBirth | date: 'yyyy-MM-dd'" (ngModelChange)="user.dateOfBirth = $event" name="dateOfBirth" required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Address</label>
+                    <input #address="ngModel" class="form-control" type="text" [(ngModel)]="user.address" name="address" required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Phone Number</label>
+                    <input #phoneNumber="ngModel" class="form-control" type="text" [(ngModel)]="user.phoneNumber" name="phoneNumber" required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Email</label>
+                    <input #email="ngModel" class="form-control" type="email" [(ngModel)]="user.email" name="email" required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Avatar</label><br/>
+                    <!-- <input #avatar="ngModel" class="form-control" type="text" [(ngModel)]="user.avatarInBase64" name="avatar" required="required"/> -->
+                    <input type="file"
+                            id="file"
+                            (change)="handleFileInput($event.target.files)">
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Role</label>
+                    <div>
+                        <select #role="ngModel" class="form-control" type="text" name="roles" [(ngModel)]="user.roles">
+                            <option *ngFor="let role of roleDataService.roles" value="{{role.id}}">
+                                {{role.role}}
+                            </option>
+                        </select>
+                    </div>                   
+                </fieldset>
+                <!-- <fieldset class="form-group">
+                    <label>Status</label>
+                    <input #status="ngModel" class="form-control" 
+                            type="text" 
+                            [(ngModel)]="user.status" 
+                            name="status" 
+                            required="required"/>
+                </fieldset> -->
+                <button type="submit" class="btn btn-success">Save</button>
+            </form>
+        </div>
+        <div>
+            <img src="../../assets/images/uploaded/source.gif" width="500px" height="400px"/>
+        </div>
+    </div>
+</div>

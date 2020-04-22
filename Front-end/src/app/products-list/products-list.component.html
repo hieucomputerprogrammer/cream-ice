@@ -1,0 +1,48 @@
+<!-- <div class="container">
+    <h1>Hello, {{username}}!</h1>
+    <p>Manage your <a routerLink="/users">users</a>.</p>
+    <p>Manage your <a routerLink="/customers">customers</a>.</p>
+    <p>Manage your <a routerLink="/iceCreams">ice-creams</a>.</p>
+    <p>Manage your <a routerLink="/recipes">recipes</a>.</p>
+    <p>Manage your <a routerLink="/feedbacks">feedbacks</a>.</p>
+    <p>Manage your <a routerLink="/faqs">FAQs</a>.</p>
+    <p>Manage your <a routerLink="/orders">orders</a>.</p>
+    <p>Manage your <a routerLink="/payments">payments</a>.</p>
+</div> -->
+<!-- <div class="container">
+    <p>Click here to get a customized welcome message from the Back-End:</p>
+    <button (click)="getIceCreams()" class="btn btn-success">Get Ice-Cream data from the Back-End!</button>
+</div>
+<div class="container" *ngIf="iceCream">
+    <br/>
+    <h5>{{iceCream}}</h5>
+</div> -->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <div class="list-group">
+                <button type="button" [ngClass]="{'active':selectedIceCreamId === iceCream.id}" class="list-group-item list-group-item-action" *ngFor="let iceCream of iceCreams" (click)="filterRecipesByIceCreamId(iceCream.id)">{{ iceCream.name }}</button>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="row">
+                <div class="col-3 p-4" *ngFor="let recipe of recipes">
+                    <!-- <div><img [src]="recipe.imageInBase64" class="avatar"/></div>
+                    <div class="mt-2">{{ recipe.title }}</div>
+                    <div>{{ recipe.description }}</div> -->
+
+                    <div class="card">
+                        <img [src]="recipe.imageInBase64" class="card-img-top"/>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ recipe.title }}</h5>
+                            <p class="card-text">{{ recipe.description }}</p>
+                            <button (click)="addToCart(recipe)" class="btn btn-primary">Add To Cart</button>
+                            <input type="number" class="form-control quantity-input-box mt-2" [(ngModel)]="recipe.quantity"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

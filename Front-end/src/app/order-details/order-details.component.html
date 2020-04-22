@@ -1,0 +1,45 @@
+<div class="container">
+    <h1>Order Details</h1>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="alert alert-warning" *ngIf="orderForm.dirty && orderForm.invalid">Enter valid values!</div>
+            <div class="alert alert-warning" *ngIf="orderForm.dirty && paymentOption.invalid">Enter payment option!</div>
+            <div class="alert alert-warning" *ngIf="orderForm.dirty && createDate.invalid">Enter create date!</div>
+            <div class="alert alert-warning" *ngIf="orderForm.dirty && deliveryDetail.invalid">Enter delivery detail!</div>
+            <div class="alert alert-warning" *ngIf="orderForm.dirty && notes.invalid">Enter notes!</div>
+            <div class="alert alert-warning" *ngIf="orderForm.dirty && status.invalid">Enter status!</div>
+            <form (ngSubmit)="!orderForm.invalid && saveOrder()" #orderForm="ngForm">
+                <fieldset class="form-group">
+                    <label>Payment Option</label>
+                    <input #paymentOption="ngModel" class="form-control" type="text" [(ngModel)]="order.paymentOption" name="paymentOption" required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Create Date</label>
+                    <input  #createDate="ngModel" 
+                            class="form-control" 
+                            type="date" 
+                            [ngModel]="order.createDate | date:'yyyy-MM-dd'" 
+                            (ngModelChange)="order.createDate = $event" 
+                            name="createDate" 
+                            required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Delivery Detail</label>
+                    <input #deliveryDetail="ngModel" class="form-control" type="text" [(ngModel)]="order.deliveryDetail" name="deliveryDetail" required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Notes</label>
+                    <input #notes="ngModel" class="form-control" type="text" [(ngModel)]="order.notes" name="notes" required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Status</label>
+                    <input #status="ngModel" class="form-control" type="text" [(ngModel)]="order.status" name="status" required="required"/>
+                </fieldset>
+                <button class="btn btn-success" (click)="saveOrder()">Save</button>
+            </form>
+        </div>
+        <div>
+            <img src="../../assets/images/uploaded/source.gif" width="500px" height="400px"/>
+        </div>
+    </div>
+</div>

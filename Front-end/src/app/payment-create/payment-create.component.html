@@ -1,0 +1,51 @@
+<div class="container">
+    <h1>Add Payment</h1>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="alert alert-warning" *ngIf="paymentForm.dirty && paymentForm.invalid">Enter valid values!</div>
+            <div class="alert alert-warning" *ngIf="paymentForm.dirty && cardType.invalid">Enter card type!</div>
+            <div class="alert alert-warning" *ngIf="paymentForm.dirty && cvv.invalid">Enter CVV!</div>
+            <div class="alert alert-warning" *ngIf="paymentForm.dirty && nameOnCard.invalid">Enter name on card!</div>
+            <div class="alert alert-warning" *ngIf="paymentForm.dirty && expiredDate.invalid">Enter expire date!</div>
+            <div class="alert alert-warning" *ngIf="paymentForm.dirty && dateOfBirth.invalid">Enter date of birth!</div>
+            <form (ngSubmit)="!paymentForm.invalid && addPayment()" #paymentForm="ngForm">
+                <fieldset class="form-group">
+                    <label>Card Type</label>
+                    <input #cardType="ngModel" class="form-control" type="text" [(ngModel)]="payment.cardType" name="cardType" required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>CVV</label>
+                    <input #cvv="ngModel" class="form-control" type="number" [(ngModel)]="payment.cvv" name="cvv" required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Name on Card</label>
+                    <input #nameOnCard="ngModel" class="form-control" type="text" [(ngModel)]="payment.nameOnCard" name="nameOnCard" required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Expired Date</label>
+                    <input  #expiredDate="ngModel"
+                            class="form-control" 
+                            type="date" 
+                            [ngModel]="payment.expiredDate | date:'yyyy-MM-dd'" 
+                            (ngModelChange)="payment.expiredDate = $event" 
+                            name="expiredDate" 
+                            required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Date of Birth</label>
+                    <input  #dateOfBirth="ngModel"
+                            class="form-control" 
+                            type="date" 
+                            [ngModel]="payment.dateOfBirth | date:'yyyy-MM-dd'" 
+                            (ngModelChange)="payment.dateOfBirth = $event" 
+                            name="dateOfBirth" 
+                            required="required"/>
+                </fieldset>
+                <button type="submit" class="btn btn-success">Save</button>
+            </form>
+        </div>
+        <div>
+            <img src="../../assets/images/uploaded/source.gif" width="500px" height="400px"/>
+        </div>
+    </div>
+</div>

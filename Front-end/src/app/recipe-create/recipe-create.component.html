@@ -1,0 +1,47 @@
+<div class="container">
+    <h1>Add Recipe</h1>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="alert alert-warning" *ngIf="recipeForm.dirty && recipeForm.invalid">Enter valid values!</div>
+            <div class="alert alert-warning" *ngIf="recipeForm.dirty && title.invalid">Enter title!</div>
+            <div class="alert alert-warning" *ngIf="recipeForm.dirty && description.invalid">Enter description!</div>
+            <div class="alert alert-warning" *ngIf="recipeForm.dirty && details.invalid">Enter details!</div>
+            <!-- <div class="alert alert-warning" *ngIf="recipeForm.dirty && image.invalid">Choose image!</div> -->
+            <div class="alert alert-warning" *ngIf="recipeForm.dirty && price.invalid">Enter price!</div>
+            <div class="alert alert-warning" *ngIf="recipeForm.dirty && status.invalid">Enter status!</div>
+            <form (ngSubmit)="!recipeForm.invalid && addRecipe()" #recipeForm="ngForm">
+                <fieldset class="form-group">
+                    <label>Title</label>
+                    <input #title="ngModel" class="form-control" type="text" [(ngModel)]="recipe.title" name="title" required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Description</label>
+                    <input #description="ngModel" class="form-control" type="text" [(ngModel)]="recipe.description" name="description" required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Details</label>
+                    <input #details="ngModel" class="form-control" type="text" [(ngModel)]="recipe.details" name="details" required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Image</label><br/>
+                    <!-- <input #image="ngModel" class="form-control" type="text" [(ngModel)]="recipe.image" name="image" required="required"/> -->
+                    <input type="file"
+                            id="file"
+                            (change)="handleFileInput($event.target.files)">
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Price</label>
+                    <input #price="ngModel" class="form-control" type="number" [(ngModel)]="recipe.price" name="price" required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Status</label>
+                    <input #status="ngModel" class="form-control" type="text" [(ngModel)]="recipe.status" name="status" required="required"/>
+                </fieldset>
+                <button type="submit" class="btn btn-success">Save</button>
+            </form>
+        </div>
+        <div>
+            <img src="../../assets/images/uploaded/source.gif" width="500px" height="400px"/>
+        </div>
+    </div>
+</div>

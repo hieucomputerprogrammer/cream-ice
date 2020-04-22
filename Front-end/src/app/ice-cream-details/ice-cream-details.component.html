@@ -1,0 +1,46 @@
+<div class="container">
+    <h1>Ice-cream Details</h1>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="alert alert-warning" *ngIf="iceCreamForm.dirty && iceCreamForm.invalid">Enter valid values!</div>
+            <div class="alert alert-warning" *ngIf="iceCreamForm.dirty && name.invalid">Enter name!</div>
+            <div class="alert alert-warning" *ngIf="iceCreamForm.dirty && description.invalid">Enter description!</div>
+            <form (ngSubmit)="!iceCreamForm.invalid && saveIceCream()" #iceCreamForm="ngForm">
+                <fieldset class="form-group">
+                    <label>Name</label>
+                    <input #name="ngModel" type="text" [(ngModel)]="iceCream.name" class="form-control" name="name" required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Description</label>
+                    <input #description="ngModel" type="text" class="form-control" [(ngModel)]="iceCream.description" name="description" required="required"/>
+                </fieldset>
+                <button class="btn btn-success" (click)="saveIceCream()">Save</button>
+            </form>
+        </div>
+        <div>
+            <img src="../../assets/images/uploaded/source.gif" width="500px" height="400px"/>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="container">
+    <div class="alert alert-warning" *ngIf="iceCreamForm.dirty && iceCreamForm.invalid">Enter valid values!</div>
+    <div class="alert alert-warning" *ngIf="iceCreamForm.dirty && name.invalid">Enter name!</div>
+    <div class="alert alert-warning" *ngIf="iceCreamForm.dirty && description.invalid">Enter description!</div>
+    <form (ngSubmit)="!iceCreamForm.invalid && saveIceCream()" #iceCreamForm="ngForm">
+        <div class="Detail-content">
+            <label>Name</label>
+            <input #name="ngModel" type="text" [(ngModel)]="iceCream.name" class="form-control" name="name" required="required"/>
+            <br>
+            <label>Description</label>
+            <input #description="ngModel" type="text" class="form-control" [(ngModel)]="iceCream.description" name="description" required="required"/>
+        </div>
+        <div class="Yoona-img">
+            <img src="../../assets/images/uploaded/yoona.gif" alt="">
+        </div>
+        <div class="Save-Cancel">
+            <button class="btn btn-success" (click)="saveIceCream()">Save</button>
+            <button type="submit">Change</button>
+        </div>
+    </form>
+</div> -->

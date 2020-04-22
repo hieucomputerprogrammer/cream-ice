@@ -1,0 +1,30 @@
+<div class="container">
+    <h1>Feedback Details</h1>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="alert alert-warning" *ngIf="feedbackForm.dirty && feedbackForm.invalid">Enter valid values!</div>
+            <div class="alert alert-warning" *ngIf="feedbackForm.dirty && details.invalid">Enter details!</div>
+            <div class="alert alert-warning" *ngIf="feedbackForm.dirty && createDate.invalid">Enter created date!</div>
+            <form (ngSubmit)="!feedbackForm.invalid && saveFeedback()" #feedbackForm="ngForm">
+                <fieldset class="form-group">
+                    <label>Details</label>
+                    <input #details="ngModel" class="form-control" type="text" [(ngModel)]="feedback.details" name="details" required="required"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label>Create Date</label>
+                    <input  #createDate="ngModel"
+                            class="form-control" 
+                            type="date" 
+                            [ngModel]="feedback.createDate | date:'yyyy-MM-dd'" 
+                            (ngModelChange)="feedback.createDate = $event" 
+                            name="createDate" 
+                            required="required"/>
+                </fieldset>
+                <button type="submit" class="btn btn-success">Save</button>
+            </form>
+        </div>
+        <div>
+            <img src="../../assets/images/uploaded/source.gif" width="500px" height="400px"/>
+        </div>
+    </div>
+</div>

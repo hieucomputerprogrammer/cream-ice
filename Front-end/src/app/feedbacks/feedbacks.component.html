@@ -1,0 +1,58 @@
+<h1>FEEDBACKS</h1>
+<div class="alert alert-success" *ngIf="message">{{message}}</div>
+<div>
+    <!-- <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Details</th>
+                <th>Created Date</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let feedback of feedbacks">
+                <td>{{feedback.id}}</td>
+                <td>{{feedback.details}}</td>
+                <td>{{feedback.createDate | date }}</td>
+                <td><a [routerLink]="[feedback.id]" class="btn btn-success">Update</a></td>
+                <td><button (click)="deleteFeedback(feedback.id)" class="btn btn-warning">Delete</button></td>
+            </tr>
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+    <div class="row">
+        <button (click)="addFeedback()" class="btn btn-success">Add</button>
+    </div> -->
+
+    <div class="mb-4">
+        <button (click)="addFeedback()" class="btn btn-success btn-lg">Add</button>
+    </div>
+    <table mat-table [dataSource]="feedbackDataSource" class="feedbacks-table mat-elevation-z8">
+        <ng-container matColumnDef="details">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Details</th>
+            <td mat-cell *matCellDef="let feedback"> {{feedback.details}} </td>
+        </ng-container>
+        <ng-container matColumnDef="createDate">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Created Date</th>
+            <td mat-cell *matCellDef="let feedback"> {{feedback.createDate | date}} </td>
+        </ng-container>
+        <ng-container matColumnDef="update">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Update</th>
+            <td mat-cell *matCellDef="let feedback">
+                <button mat-raised-button color="primary" (click)="updateFeedback(feedback.id)" class="mr-3">Update</button>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Delete</th>
+            <td mat-cell *matCellDef="let feedback">
+                <button mat-raised-button color="warn" (click)="deleteFeedback(feedback.id)">Delete</button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20, 25, 30, 35, 40, 45, 50]" showFirstLastButtons></mat-paginator>
+</div>

@@ -1,0 +1,29 @@
+<div class="login">
+    <h1>Log In</h1>
+    <div class="container">
+        <table>
+            <thead></thead>
+            <tbody>
+                <tr>
+                    <td>Username:</td>
+                    <td><input type="text" name="username" [(ngModel)]="username" /></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" name="password" [(ngModel)]="password"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <!-- <td><button (click)=login() class="btn btn-success">Log In</button></td> -->
+                    <!-- <td><button (click)=handleBasicAuthenticationLogin() class="btn btn-success">Log In</button></td> -->
+                    <td><button mat-button (click)=handleJWTAuthenticationLogin() class="btn btn-success">Log In</button></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td  class="alert alert-warning" *ngIf="invalidLogin">{{errorMessage}}</td>
+                </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+</div>

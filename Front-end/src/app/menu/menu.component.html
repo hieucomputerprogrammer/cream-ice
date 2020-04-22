@@ -1,0 +1,23 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div><a routerLink="/products-list" class="navbar-brand">Cream Ice</a></div>
+        <ul class="navbar-nav">
+            <li><a *ngIf="!hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/products-list" class="nav-link">Home</a></li>
+            <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/users" class="nav-link">Users</a></li>
+            <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/customers" class="nav-link">Customers</a></li>
+            <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/ice-creams" class="nav-link">Ice Creams</a></li>
+            <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/recipes" class="nav-link">Recipes</a></li>
+            <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/feedbacks" class="nav-link">Feedbacks</a></li>
+            <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/faqs" class="nav-link">FAQs</a></li>
+            <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/orders" class="nav-link">Orders</a></li>
+            <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/payments" class="nav-link">Payments</a></li>
+            <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/settings" class="nav-link">About</a></li>
+        </ul>
+        <ul class="navbar-nav navbar-collapse justify-content-end">
+            <li><a *ngIf="!hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/create-user" class="nav-link">Sign Up</a></li>
+            <li><a *ngIf="!hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/login" class="nav-link">Log In</a></li>
+            <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/cart" class="nav-link"><img src="../../assets/images/iconfinder_ice-cream-cart-trolley-sweets_3558108.png"/></a></li>
+            <li><a *ngIf="hardcodedAuthenticationService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Log Out</a></li>
+        </ul>        
+    </nav>
+</header>

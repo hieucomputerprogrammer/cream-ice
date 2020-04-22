@@ -1,0 +1,64 @@
+<h1>FAQs</h1>
+<div class="alert alert-success" *ngIf="message">{{message}}</div>
+<div>
+    <!-- <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Question</th>
+                <th>Answer</th>
+                <th>Status</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let faq of faqs">
+                <td>{{faq.id}}</td>
+                <td>{{faq.question}}</td>
+                <td>{{faq.answer}}</td>
+                <td>{{faq.status}}</td>
+                <td><button (click)="updateFAQ(faq.id)" class="btn btn-success">Update</button></td>
+                <td><button (click)="deleteFAQ(faq.id)" class="btn btn-warning">Delete</button></td>
+            </tr>
+        </tbody>
+        <tfoot></tfoot>
+    </table> -->
+    <!-- <div class="row">
+        <button (click)="addFAQ()" class="btn btn-success">Add</button>
+    </div> -->
+
+    <div class="mb-4">
+        <button (click)="addFAQ()" class="btn btn-success btn-lg">Add</button>
+    </div>
+    <table mat-table [dataSource]="faqDataSource" class="faqs-table mat-elevation-z8">
+        <ng-container matColumnDef="question">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Question</th>
+            <td mat-cell *matCellDef="let faq"> {{faq.question}} </td>
+        </ng-container>
+        <ng-container matColumnDef="answer">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Answer</th>
+            <td mat-cell *matCellDef="let faq"> {{faq.answer}} </td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let faq"> {{faq.status}} </td>
+        </ng-container>
+        <ng-container matColumnDef="update">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Update</th>
+            <td mat-cell *matCellDef="let faq">
+                <button mat-raised-button color="primary" (click)="updateFAQ(faq.id)" class="mr-3">Update</button>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+            <th class="text-center" mat-header-cell *matHeaderCellDef>Delete</th>
+            <td mat-cell *matCellDef="let faq">
+                <button mat-raised-button color="warn" (click)="deleteFAQ(faq.id)">Delete</button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20, 25, 30, 35, 40, 45, 50]" showFirstLastButtons></mat-paginator>
+</div>
