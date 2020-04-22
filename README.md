@@ -1,2 +1,2 @@
-# cream-ice
-Cream Ice web application
+# CREAM ICE
+Cream Ice web application using Spring Boot and Angular 8
